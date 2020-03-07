@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>隐藏输入密码</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,900');
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .inputBox {
+      position: relative;
+      width: 400px;
+      height: 60px;
+    }
+    
+    .inputBox input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      padding: 0 20px;
+      font-size: 18px;
+      outline: none;
+      box-sizing: border-box;
+      border-radius: 8px;
+      box-shadow: -4px -4px 10px rgba(255, 255, 255, 1), inset 4px 4px 10px rgba(0, 0, 0, 0.05), inset -4px -4px 10px rgba(255, 255, 255, 1), 4px 4px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .inputBox input::placeholder {
+      color: #ccc;
+    }
+    
+    #toggle {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background: url(show.svg);
+      background-size: cover;
+      cursor: pointer;
+    }
+    
+    #toggle.hide {
+      background: url(hide.svg);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="inputBox">
+    <input type="password" id="password" placeholder="Enter Password"></input>
+    <div id="toggle"></div>
+  </div>
+
+  <script>
+    const password = document.getElementById('password');
+    const toggle = document.getElementById('toggle');
+
+    toggle.onclick = function() {
+      if (password.type === 'password') {
+        password.setAttribute('type', 'text');
+        this.classList.add('hide');
+      } else {
+        password.setAttribute('type', 'password');
+        this.classList.remove('hide');
+      }
+    }
+  </script>
+</body>
+
+</html>

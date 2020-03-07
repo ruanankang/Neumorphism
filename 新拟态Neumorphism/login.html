@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>login</title>
+  <style>
+    @font-face {
+      font-family: "ankongfont";
+      src: url("./iconfont/iconfont.eot");
+      src: url("./iconfont/iconfont.eot?#iefix") format("embedded-opentype"), url("./iconfont/iconfont.woff") format("woff"), url("./iconfont/iconfont.ttf") format("truetype"), url("./iconfont/iconfont.svg#iconfont") format("svg");
+    }
+    
+    .iconfont {
+      font-family: "ankongfont" !important;
+      font-style: normal;
+    }
+    
+    body,
+    html {
+      background-color: #ebecf0;
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      font-family: Nexa;
+    }
+    
+    .log-wrap {
+      width: 320px;
+      padding: 16px;
+      margin: 0 auto;
+    }
+    
+    .headline {
+      color: #868a9a;
+      text-shadow: 1px 1px 1px #fff;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    
+    .log-wrap input,
+    .log-wrap button {
+      color: #868a9a;
+      padding: 16px;
+      background-color: #ebecf0;
+      text-shadow: 1px 1px 0 #fff;
+      font-size: 16px;
+      border-radius: 320px;
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+    
+    .log-wrap input {
+      font-family: Nexa;
+      font-weight: 700;
+    }
+    
+    .log-wrap input::placeholder {
+      color: #babecc;
+    }
+    
+    .log-wrap button {
+      cursor: pointer;
+    }
+    
+    .input-item,
+    .log-button {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .input-item {
+      position: relative;
+    }
+    
+    .input-item i {
+      position: absolute;
+      font-weight: bolder;
+      color: #babecc;
+      text-shadow: 1px 1px 0 #fff;
+    }
+    
+    .input-item i.account {
+      top: 14px;
+      right: 24px;
+      font-size: 20px;
+    }
+    
+    .input-item i.view {
+      top: 19px;
+      right: 23px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    
+    .input-item i.unview {
+      font-size: 15px !important;
+    }
+    
+    .input-item input {
+      box-sizing: border-box;
+      box-shadow: inset 2px 2px 6px #babecc, inset -4px -5px 8px #fff;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .input-item input:focus {
+      box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+    }
+    
+    .log-wrap button {
+      box-shadow: 4px 4px 18px #babecc, -5px -5px 10px #fff;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .log-wrap button:hover {
+      box-shadow: 2px 2px 5px #babecc, -2px -2px 5px #fff;
+    }
+    
+    .log-wrap button:active {
+      box-shadow: inset -1px -1px 2px #fff, inset 1px 1px 2px #babecc;
+    }
+    
+    .log-button button {
+      color: #b33829;
+      font-family: Nexa;
+      font-weight: 900;
+      letter-spacing: 2px;
+      height: 50px;
+      line-height: 23px;
+      margin-bottom: 12px;
+    }
+    
+    .button-group {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    
+    .button-group .button-item,
+    .segment .button-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      margin: 0 8px;
+      color: #868a9a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .button-group i.alibaba,
+    i.bytedance {
+      font-size: 14px;
+    }
+    
+    .button-group i.wechat {
+      font-weight: 700;
+    }
+    
+    .button-group i {
+      transition: all 0.2s ease-in-out;
+    }
+    
+    .button-group .button-item:hover {
+      transform: rotate(45deg);
+    }
+    
+    .button-group .button-item:hover i {
+      transform: rotate(-45deg);
+    }
+    
+    .button-group .button-item:hover i.alibaba {
+      color: #db6109;
+    }
+    
+    .button-group .button-item:hover i.wechat {
+      color: #3eb737;
+    }
+    
+    .button-group .button-item:hover i.bytedance {
+      color: #5274fd;
+    }
+    
+    .segment {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .segment .button-item {
+      margin: 0 0 0 16px;
+      font-size: 18px;
+      font-weight: bolder;
+      color: #babecc;
+      text-shadow: 1px 1px 0 #fff;
+      line-height: 18px;
+    }
+    /* finger */
+    
+    .finger-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+    
+    .finger-wrap button.finger i {
+      font-size: 70px;
+      font-weight: 200;
+      color: #babecc;
+      text-shadow: 1px 1px 0 #fff;
+    }
+    
+    .finger-wrap button.finger {
+      width: 120px;
+      height: 120px;
+      box-shadow: 2px 2px 6px #babecc, -4px -5px 8px #fff;
+    }
+    
+    .finger-wrap button.finger:hover {
+      animation: 0.8s myInsetShadow ease-out forwards;
+    }
+    
+    .finger-wrap button.finger:hover i {
+      animation: 1s fingerShine ease-in forwards;
+      animation-delay: 0.9s;
+    }
+    
+    .finger-wrap .heart-beat {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 15px;
+      height: 15px;
+      border-radius: 15px;
+      margin-top: 10px;
+      box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+    }
+    
+    .finger-wrap .heart-beat::after {
+      content: "";
+      display: block;
+      width: 12%;
+      height: 12%;
+      border-radius: 50%;
+      background-color: #ebecf0;
+      transition: all 0.8s linear;
+      animation: 0.8s myWaitShine ease-in-out infinite alternate;
+    }
+    
+    .finger-wrap button.finger:hover+.heart-beat::after {
+      animation: 0.8s myVerityShine ease-in-out infinite alternate;
+      animation-delay: 0.1s;
+    }
+    
+    @keyframes myInsetShadow {
+      0% {
+        box-shadow: 2px 2px 6px #babecc, -4px -5px 8px #fff;
+      }
+      50% {
+        box-shadow: none;
+      }
+      100% {
+        box-shadow: inset 2px 2px 10px #babecc, inset -8px -8px 11px #fff;
+      }
+    }
+    
+    @keyframes myWaitShine {
+      0% {
+        box-shadow: 0px 0px 5px 3px rgb(253, 161, 24);
+      }
+      100% {
+        box-shadow: 0px 0px 0px 0px rgb(253, 161, 24);
+      }
+    }
+    
+    @keyframes myVerityShine {
+      0% {
+        box-shadow: 0px 0px 5px 3px rgb(14, 250, 34);
+      }
+      100% {
+        box-shadow: 0px 0px 0px 0px rgb(14, 250, 34);
+      }
+    }
+    
+    @keyframes fingerShine {
+      0% {
+        text-shadow: 0 0 0 #c3ff92, 1px 1px 0 #fff;
+      }
+      100% {
+        text-shadow: 0 0 20px #c3ff92, 1px 1px 0 #fff;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="log-wrap">
+    <div class="headline">
+      <h1>Neumorphism</h1>
+    </div>
+    <!-- inf -->
+    <div class="input-item">
+      <input type="text" id="account" placeholder="accout" class="input-item__innerinput" />
+      <i class="iconfont account">&#xe601;</i>
+    </div>
+    <div class="input-item">
+      <input type="password" id="password" placeholder="password" class="input-item__innerinput" />
+      <i class="iconfont view" id="toggle">&#xe604;</i>
+    </div>
+    <!-- login -->
+    <div class="log-button">
+      <button class="log-button__button">LOGIN</button>
+    </div>
+    <!-- three-buttons -->
+    <div class="button-group">
+      <button class="button-item">
+					<i class="iconfont alibaba">&#xe608;</i>
+				</button>
+      <button class="button-item">
+					<i class="iconfont wechat">&#xe609;</i>
+				</button>
+      <button class="button-item">
+					<i class="iconfont bytedance">&#xe607;</i>
+				</button>
+    </div>
+    <!-- search -->
+    <div class="segment">
+      <div class="input-item">
+        <input type="text" placeholder="search" />
+      </div>
+      <button class="button-item iconfont">&#xe602;</button>
+    </div>
+    <!-- finger -->
+    <div class="finger-wrap">
+      <button class="finger"><i class="iconfont">&#xe603;</i></button>
+      <div class="heart-beat"></div>
+    </div>
+  </div>
+
+  <script>
+    const password = document.getElementById("password");
+    const toggle = document.getElementById("toggle");
+
+    toggle.onclick = function() {
+      if (password.type === "password") {
+        password.setAttribute("type", "text");
+        this.innerHTML = "&#xe605;";
+        this.classList.add("unview");
+      } else {
+        password.setAttribute("type", "password");
+        this.innerHTML = "&#xe604;";
+        this.classList.remove("unview");
+      }
+    };
+  </script>
+</body>
+
+</html>
